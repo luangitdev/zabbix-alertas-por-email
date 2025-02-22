@@ -1,0 +1,8 @@
+ARQUIVO DE CONFIGURAÇÃO DO ZABBIX AGENT:
+
+PATH: /etc/zabbix/zabbix_agentd.conf
+
+Server=zabbix-server
+ServerActive=zabbix-server
+Hostname=zabbix-agent
+User=zabbix

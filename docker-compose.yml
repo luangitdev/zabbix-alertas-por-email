@@ -1,0 +1,73 @@
+version: '3.7'
+
+services:
+  # Serviço do banco de dados (MariaDB)
+  zabbix-db:
+    image: mariadb:10.6
+    container_name: zabbix-db
+    networks:
+      - zabbix-net
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: zabbix
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: zabbix_password
+    volumes:
+      - zabbix-db-data:/var/lib/mysql
+    restart: always
+
+  # Serviço do servidor Zabbix
+  zabbix-server:
+    image: zabbix/zabbix-server-mysql:ubuntu-6.0-latest
+    container_name: zabbix-server
+    networks:
+      - zabbix-net
+    depends_on:
+      - zabbix-db
+    environment:
+      DB_SERVER_HOST: zabbix-db
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: zabbix_password
+      MYSQL_DATABASE: zabbix
+    ports:
+      - "10051:10051"
+    restart: always
+
+  # Serviço da interface web do Zabbix
+  zabbix-web:
+    image: zabbix/zabbix-web-nginx-mysql:ubuntu-6.0-latest
+    container_name: zabbix-web
+    networks:
+      - zabbix-net
+    depends_on:
+      - zabbix-server
+      - zabbix-db
+    environment:
+      DB_SERVER_HOST: zabbix-db
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: zabbix_password
+      MYSQL_DATABASE: zabbix
+      ZBX_SERVER_HOST: zabbix-server
+    ports:
+      - "8080:8080"
+    restart: always
+
+  # Serviço do agente Zabbix (opcional)
+  zabbix-agent:
+    image: zabbix/zabbix-agent:ubuntu-6.0-latest
+    container_name: zabbix-agent
+    networks:
+      - zabbix-net
+    environment:
+      ZBX_HOSTNAME: zabbix-agent
+      ZBX_SERVER_HOST: zabbix-server
+    restart: always
+
+# Configuração da rede personalizada
+networks:
+  zabbix-net:
+    driver: bridge
+
+# Volumes para persistência de dados
+volumes:
+  zabbix-db-data:
