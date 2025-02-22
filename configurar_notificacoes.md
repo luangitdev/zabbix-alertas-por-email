@@ -60,4 +60,4 @@ Agora, faça um teste para garantir que os e-mails estão sendo enviados correta
 ---
 
 ### 🎯 **Conclusão**
-Agora, o Zabbix enviará alertas automaticamente por e-mail sempre que um problema ocorrer. Se precisar de ajuda para configurar um servidor SMTP específico (Gmail, Outlook, empresa privada, etc.), me avise! 🚀
+Agora, o Zabbix enviará alertas automaticamente por e-mail sempre que um problema ocorrer.
