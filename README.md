@@ -240,6 +240,6 @@ Se tiver dúvidas ou sugestões, entre em contato:
 
 - **Nome**: Luan Castro
 - **Email**: luandecastrosilva@gmail.com
-- **LinkedIn**: [linkedin.com/in/seu-perfil](https://www.linkedin.com/in/luancastrosilva/)
-- **GitHub**: [github.com/seu-usuario](https://github.com/luangitdev)
+- **LinkedIn**: [linkedin.com/in/luancastrosilva](https://www.linkedin.com/in/luancastrosilva/)
+- **GitHub**: [github.com/luangitdev](https://github.com/luangitdev)
 
