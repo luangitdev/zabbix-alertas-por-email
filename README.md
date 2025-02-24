@@ -204,6 +204,11 @@ volumes:
    ```
    http://localhost:8080
    ```
+4. Login de acesso padrão:
+   ```
+   Usuário: admin
+   Senha: zabbix
+   ```
 
 ---
 
